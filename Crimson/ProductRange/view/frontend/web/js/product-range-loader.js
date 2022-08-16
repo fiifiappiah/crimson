@@ -27,7 +27,6 @@ define([
                     sort: sort
                 },
                 success: function(data) {
-                    alert('success');
                     if (data.success === true) {
                         $(element).html(data.output);
                     }
