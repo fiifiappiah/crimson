@@ -1,0 +1,30 @@
+<?php
+// Add Some Code Here for custom design
+?>
+
+<form id="product-range-form">
+    <span>Range</span>
+    <label for="low-range">Low Range</label><input type="text" name="low-range">
+    <label for="high-range">HighRange</label><input type="text" name="high-range">
+    <label for="sort-type">Sort</label>
+    <select name="sort">
+        <option>Asc</option>
+        <option>Desc</option>
+    </select>
+    <input type="submit" name="sort">
+</form>
+<div id="render-products">
+
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Crimson_ProductRange/js/product-range-loader": {
+                "ajaxUrl": "/productrange/customer/products",
+                "elementId": "render-products",
+                "form": "product-range-form"
+            }
+        }
+    }
+    </script>
