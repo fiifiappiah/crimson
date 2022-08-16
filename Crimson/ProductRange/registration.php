@@ -4,7 +4,7 @@
  * Conding Excercise for Crimson.
  *
  * @package     Crimson
- * @copyright   Copyright (c) 2022 Fiifi Appiah (http://fiifiappiah.com)
+ * @copyright   Copyright (c) 2022 Fiifi Appiah
  * @license     MIT Commons
  */
 

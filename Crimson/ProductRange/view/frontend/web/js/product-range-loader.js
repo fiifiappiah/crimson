@@ -8,45 +8,37 @@ define([
             element = '#'+config.elementId,
             form = '#'+config.form;
         $(form).submit(function () {
-            // alert(ajaxUrl);
+            let low_range = $(form).find('input[name="low-range"]').val(),
+                high_range = $(form).find('input[name="high-range"]').val();
+
+            if(!$.isNumeric(high_range) || !$.isNumeric(low_range) || (low_range > high_range)) {
+                alert('enter valid price range');
+                return false;
+            }
+
+            let sort = $('#render-sort').find(":selected").val();
             $.ajax({
                 url: ajaxUrl,
                 type: 'POST',
                 dataType: 'json',
                 data: {
-                    customdata1: 'test1',
-                    customdata2: 'test2',
-                },
-                complete: function(response) {
-                    alert('ajax complete');
-                    // country = response.responseJSON.default_country;
-                    // state = response.responseJSON.state;
-                    // console.log(state+' '+country);
+                    low_range: low_range,
+                    high_range: high_range,
+                    sort: sort
                 },
                 success: function(data) {
                     alert('success');
-                    // var element = $('#' + elementId);
                     if (data.success === true) {
                         $(element).html(data.output);
-                        console.log(data.output);
-                    //     $('form[data-role="tocart-form"]').catalogAddToCart();
-                    // } else {
-                    //     element.html('<p><strong>' + data.output + '</strong></p>'); // display error message
                     }
                     return data.success;
                 },
                 error: function (xhr, status, errorThrown) {
-                    // alert(errorThrown)
                     console.log(errorThrown);
-                    console.log(status);
-                    alert('error');
-                    alert(ajaxUrl);
-                    // console.log('Error happens. Try again.');
                 }
             });
             return false;
         });
     }
     return renderProductRange;
-    // return false;
 });
